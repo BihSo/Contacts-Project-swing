@@ -28,32 +28,32 @@ public class Client {
         setGmail(gmail);
     }
     public String getFullName() {
-        return fullName.trim();//"   Bisho Salama   "
+        return fullName;
     }
     public void setFullName(String fullName) {
-        if ( !fullName.isEmpty() && fullName.trim().replaceAll("[ ]+", " ").length() >= 10 ) {
+        if (fullName.trim().replaceAll("[ ]+", " ").length() >= 10) {
             this.fullName = fullName.trim().replaceAll("[ ]+", " ");
-        } else { // !    !a && !b
+        } else {
             messege += "Full name is invalid\n";
             f = false;
         } 
     }
     public String getPhoneNumber() {
-        return phoneNumber.trim();
+        return phoneNumber;
     }
     public void setPhoneNumber(String phoneNumber) {
-        if (Pattern.matches("((\\+201)|(201)|(01))[0125]\\d{8}$", phoneNumber.trim())) {
-            this.phoneNumber = phoneNumber;            
+        if (Pattern.matches("((\\+201)|(201)|(01))[0125]\\d{8}$", phoneNumber.trim())) { //Egyption number only by regex
+            this.phoneNumber = phoneNumber.trim();            
         } else {
             messege += "Phone number is invalid\n";
             f = false;
         }
     }
     public String getGmail() {
-        return gmail.trim();
+        return gmail;
     }
     public void setGmail(String gmail) {
-        if (Pattern.matches("[a-z0-9]{5,20}@[a-z]{3,6}\\.[a-z]{3,6}$", gmail.trim().toLowerCase())) {
+        if (Pattern.matches("[a-z0-9]{5,20}@[a-z]{3,6}\\.[a-z]{3,6}$", gmail.trim().toLowerCase())) { // simple regex for check email
             this.gmail = gmail.trim().toLowerCase();        
         } else {
             messege += "Gmail is invalid\n";
@@ -61,11 +61,11 @@ public class Client {
         } 
     }
     public String getCity() {
-        return city.trim();
+        return city;
     }
     public void setCity(String city) {
         if (!(city.trim().length() > 20 || city.trim().length() < 3 )) {
-            this.city = city;
+            this.city = city.trim();
         } else {
             messege += "City is invalid";
             f = false;
